@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "Введите адрес сети";
+read a;
+echo "Введите маску подсети";
+read f;
+for (( i=a ; i=0 ; i-- ));do 
+echo "$s";
+done

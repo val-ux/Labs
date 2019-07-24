@@ -1,0 +1,85 @@
+#!/bin/bash
+function zb {
+echo "Введите время запуска будтльника ( час, минута через пробел)";
+read h m;
+vm;
+wb;
+}
+function vm {
+	echo "Выберете мелодию";
+	echo "Мелодия 1";
+	echo "Мелодия 2";
+	echo "Мелодия 3";
+	echo "Мелодия 4";
+	echo "Мелодия 5";
+	read v;
+	
+}
+
+function ab {
+crontab -l &> laba3;
+grep ***Будильник*** laba3 | cut -d " " -f  2,1;
+
+}
+ function ib {
+echo "Введите время будильника, который хотите изменить (час, минута через пробел)";
+read date;
+sed -i "s!$date.*!deletethis!" laba3;
+sed -i '/deletethis/d' laba3;
+crontab laba3;
+echo "Введите время запуска нового будтльника (час, минута через пробел)";
+read date;
+crontab laba3;
+wb;
+}
+
+function db {
+echo "Введите время будильника, который хотите удaлить (час, минута через пробел)";
+read date;
+sed -i "s!$date.*!deletethis!" laba3;
+sed -i '/deletethis/d' laba3;
+crontab laba3;
+wb
+
+}
+
+function wb {
+crontab -l &> laba3;
+t1=`grep "no crontab" laba3`;
+t=`whoami`;
+t2=`echo "no crontab for $t"`;
+if [ "$t1" = "$t2" ]
+then
+echo "$m $h * * * Видео /home/user/Музыка/Мелодии/мелодия$v.mp3"  ***Будильник*** > laba3;
+crontab laba3;
+else
+echo "$m $h * * * Видео /home/user/Музыка/Мелодии/мелодия$v.mp3"   ***Будильник*** >> laba3;
+crontab laba3;
+fi
+}
+
+function menu {
+echo "Выберите действие из списка:";
+echo "1-Установить будильник";
+echo "2-Показать список активных будильников";
+echo "3-Редактировать будильник";
+echo "4-Удалить будильник";
+echo "5-Выйти";
+read n;
+if [[ n -eq 1 ]]; then
+zb;
+menu;
+elif [[ n -eq 2 ]]; then
+ab;
+menu;
+elif [[ n -eq 3 ]]; then
+ib;
+menu;
+elif [[ n -eq 4 ]]; then
+db;
+menu;
+elif [[ n -eq 5 ]]; then
+exit 1;
+fi
+}
+menu;

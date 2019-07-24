@@ -1,0 +1,97 @@
+#!/bin/bash
+
+function wb {
+crontab -l &> laba4;
+t1=`grep "no crontab" laba4`;
+t=`whoami`;
+t2=`echo "no crontab for $t"`;
+if [ "$t1" = "$t2" ]
+then
+echo "$date * * * tar cf $p$archive.tar $c"  ***Резервная копия*** > laba4;
+crontab laba4;
+else
+echo "$date * * * tar cf $p$archive.tar $c"  ***Резервная копия*** >> laba4;
+crontab laba4;
+fi
+}
+
+ function wdd {
+	crontab -l &> laba4;
+t1=`grep "no crontab" laba4`;
+t=`whoami`;
+t2=`echo "no crontab for $t"`;
+if [ "$t1" = "$t2" ]
+then
+echo "$date * * * dd if=$w$c of=$p$c"  ***Резервная копия*** > laba4;
+crontab laba4;
+else
+echo "$date * * * tar cf $p$archive.tar $c"  ***Резервная копия*** >> laba4;
+crontab laba4;
+fi
+} 
+
+function cop {
+echo "Откуда копировать?";
+read w;
+echo "Что копировать?";
+read c;
+echo "Куда копировать?";
+echo "Введите путь:";
+read p;
+echo "Имя архива:";
+read archive;
+echo "Когда копировать?";
+echo "Введите время в формате минута час (через пробел)";
+read date;
+crontab laba4;
+
+wb;
+}
+
+
+function ab {
+crontab -l &> laba4;
+grep ***Резервная копия*** laba4 | cut -d " " -f  2,1;
+
+}
+ function ib {
+echo "Введите время создания резервной копии, которое хотите измнеить";
+read date;
+sed -i "s!$mh.*!deletethis!" laba4;
+sed -i '/deletethis/d' laba4;
+crontab laba4;
+echo "Введите время содания новой резервной копии";
+read date;
+crontab laba4;
+wb;
+}
+
+function db {
+echo "Введите время создания резервной копии, которую хотите удалить";
+read date;
+sed -i "s!$mh.*!deletethis!" laba4;
+sed -i '/deletethis/d' laba4;
+crontab laba4;
+wb
+
+}
+ 
+
+function menu {
+echo "1-Создать резервную копию";
+echo "2-Просмтр резервных копий";
+echo "3-Удаление резервного копированя";
+echo "4-Редактирование резервного копирования";
+read n;
+if [[ n -eq 1 ]]; then
+cop;
+elif [[ n -eq 2 ]]; then
+ad;
+elif [[ n -eq 3 ]]; then
+db;
+elif [[ n -eq 4 ]]; then
+id
+menu;
+fi
+}
+menu;

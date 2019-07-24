@@ -1,0 +1,28 @@
+echo "Введите место располжения папок";
+read f
+cd $f;
+echo "Введите количество папок";
+read y
+echo "Введите количество папок, которые будут лежать в другой папке ";
+read k
+echo "Введит колличество файлов";
+read l
+echo "Введите название первых папок";
+read d
+
+
+for (( i=0; i<y; i++ )); do
+	for (( t=0; t<k; t++ )); do
+	mkdir -p $d$i/$t;
+done
+done
+for (( i=0; i<y; i++ )); do
+        for (( t=0; t<k; t++ )); do
+                 for (( e=0; e<l; e++ )); do
+cd /$f/$d$i/$t;
+touch $e;
+
+done
+done
+done
+

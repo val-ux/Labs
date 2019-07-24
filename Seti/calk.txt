@@ -1,0 +1,38 @@
+
+echo "Введите значения";
+read a;
+read b;
+echo "Выберете вычислительное дйствие";
+echo "1=+, 2=-, 3=*, 4=/";
+read r;
+if [[ $r -eq 1 ]]; then
+m=$(($a+$b));
+echo "$m";
+fi
+if [[ $r -eq 2 ]]; then
+m=$(($a-$b));
+echo "$m";
+elif [[ $m -lt 0 ]]; then
+m=$(($b-$a));
+echo "-$m";
+fi
+if [[ $r -eq 3 ]]; then
+l=$(($a*$b));
+echo "$l";
+fi
+if [[ $r -eq 4 ]]; then
+m=$(($a/$b));
+k=$(((($a%$b)*100)/$b));
+echo "$m.$k";
+fi
+echo "Введите значение для вычисления факториала";
+read f;
+for (( i=1 ; i<=$f; i++)) do
+c=1;
+c=$(($c*$i));
+done
+echo "$c";
+
+
+ 
+
