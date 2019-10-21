@@ -50,10 +50,10 @@ t=`whoami`;
 t2=`echo "no crontab for $t"`;
 if [ "$t1" = "$t2" ]
 then
-echo "$m $h * * * Rhythmbox /home/user/Мелодии/мелодия$v.mp3"  ***Будильник*** > laba3;
+echo "$m $h * * * rhythmbox /home/user/Мелодии/мелодия$v.mp3"  ***Будильник*** > laba3;
 crontab laba3;
 else
-echo "$m $h * * * Rhythmbox /home/user/Мелодии/мелодия$v.mp3"   ***Будильник*** >> laba3;
+echo "$m $h * * * rhythmbox /home/user/Мелодии/мелодия$v.mp3"   ***Будильник*** >> laba3;
 crontab laba3;
 fi
 }

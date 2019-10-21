@@ -1,2 +1,9 @@
 54 19 * * * Rhythmbox /home/user/Мелодии/мелодия.mp3 ***Будильник***
- 5 * * * Rhythmbox /home/user/Мелодии/мелодия.mp3 ***Будильник***
+07 14 * * * tar cf /home/user/5.tar /ddd/ ***Резервная копия***
+10 14 * * * tar cf /home/user/tt.tar /ddd/ ***Резервная копия***
+14 10 * * * tar cf .tar  ***Резервная копия***
+15 05 * * * tar cf /home/user/34.tar /ddd/ ***Резервная копия***
+05 15 * * * tar cf /home/user/34.tar /ddd/ ***Резервная копия***
+10 16 * * * Rhythmbox /home/user/Мелодии/мелодия2.mp3 ***Будильник***
+11 16 * * * rhythmbox /home/user/Мелодии/мелодия3.mp3 ***Будильник***
+13 16 * * * rhythmbox /home/user/Мелодии/мелодия5.mp3 ***Будильник***
