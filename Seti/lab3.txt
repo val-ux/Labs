@@ -18,25 +18,25 @@ function vm {
 
 function ab {
 crontab -l &> laba3;
-grep ***Будильник*** laba3 | cut -d " " -f  2,1;
+grep ***Будильник*** laba3 | cut -d " " -f 2,1 
 
 }
  function ib {
 echo "Введите время будильника, который хотите изменить (час, минута через пробел)";
-read date;
-sed -i "s!$date.*!deletethis!" laba3;
+read h m;
+sed -i "s!$m $h.*!deletethis!" laba3;
 sed -i '/deletethis/d' laba3;
 crontab laba3;
 echo "Введите время запуска нового будтльника (час, минута через пробел)";
-read date;
+read h m;
 crontab laba3;
 wb;
 }
 
 function db {
 echo "Введите время будильника, который хотите удaлить (час, минута через пробел)";
-read date;
-sed -i "s!$date.*!deletethis!" laba3;
+read h m;
+sed -i "s!$m $h.*!deletethis!" laba3;
 sed -i '/deletethis/d' laba3;
 crontab laba3;
 wb
@@ -50,10 +50,10 @@ t=`whoami`;
 t2=`echo "no crontab for $t"`;
 if [ "$t1" = "$t2" ]
 then
-echo "$m $h * * * Видео /home/user/Музыка/Мелодии/мелодия$v.mp3"  ***Будильник*** > laba3;
+echo "$m $h * * * Rhythmbox /home/user/Мелодии/мелодия$v.mp3"  ***Будильник*** > laba3;
 crontab laba3;
 else
-echo "$m $h * * * Видео /home/user/Музыка/Мелодии/мелодия$v.mp3"   ***Будильник*** >> laba3;
+echo "$m $h * * * Rhythmbox /home/user/Мелодии/мелодия$v.mp3"   ***Будильник*** >> laba3;
 crontab laba3;
 fi
 }
